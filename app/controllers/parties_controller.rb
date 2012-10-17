@@ -3,11 +3,11 @@ class PartiesController < ApplicationController
   # GET /parties
   # GET /parties.json
   def index
-    @parties = Party.all
+    @parties = Party.page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @parties }
+      format.json { render json: {data: @parties, next: (@parties.last_page? ? nil : parties_url(page: @parties.current_page+1, format: :json)), prev: (@parties.first_page? ? nil : parties_url(page: @parties.current_page-1, format: :json)) }}
     end
   end
 
