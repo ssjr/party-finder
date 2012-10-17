@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    attributes:
+      party:
+        name: Nome
+        description: Descrição
+        street: Logradouro
+        street_number: Número
+        street_extra: Complemento
+        city: Cidade
+        state: Estado
+        latitude: Latidute
+        longitude: Longitude
+        start_at: Início
