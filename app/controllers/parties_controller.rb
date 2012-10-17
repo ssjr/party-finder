@@ -1,4 +1,5 @@
 class PartiesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
   # GET /parties
   # GET /parties.json
   def index
@@ -34,7 +35,7 @@ class PartiesController < ApplicationController
 
   # GET /parties/1/edit
   def edit
-    @party = Party.find(params[:id])
+    @party = current_user.parties.find(params[:id])
   end
 
   # POST /parties
