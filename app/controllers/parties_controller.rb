@@ -57,7 +57,7 @@ class PartiesController < ApplicationController
   # PUT /parties/1
   # PUT /parties/1.json
   def update
-    @party = Party.find(params[:id])
+    @party = current_user.parties.find(params[:id])
 
     respond_to do |format|
       if @party.update_attributes(params[:party])
@@ -73,7 +73,7 @@ class PartiesController < ApplicationController
   # DELETE /parties/1
   # DELETE /parties/1.json
   def destroy
-    @party = Party.find(params[:id])
+    @party = current_user.parties.find(params[:id])
     @party.destroy
 
     respond_to do |format|
