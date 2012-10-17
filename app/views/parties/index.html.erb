@@ -1,0 +1,41 @@
+<h1>Listing parties</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Street</th>
+    <th>Street number</th>
+    <th>Street extra</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Start at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @parties.each do |party| %>
+  <tr>
+    <td><%= party.name %></td>
+    <td><%= party.description %></td>
+    <td><%= party.street %></td>
+    <td><%= party.street_number %></td>
+    <td><%= party.street_extra %></td>
+    <td><%= party.city %></td>
+    <td><%= party.state %></td>
+    <td><%= party.latitude %></td>
+    <td><%= party.longitude %></td>
+    <td><%= party.start_at %></td>
+    <td><%= link_to 'Show', party %></td>
+    <td><%= link_to 'Edit', edit_party_path(party) %></td>
+    <td><%= link_to 'Destroy', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Party', new_party_path %>

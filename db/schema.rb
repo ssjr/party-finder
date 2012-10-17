@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017020645) do
+ActiveRecord::Schema.define(:version => 20121017022916) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -31,6 +31,33 @@ ActiveRecord::Schema.define(:version => 20121017020645) do
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "cities", ["state_id"], :name => "index_cities_on_state_id"
+
+  create_table "parties", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "street"
+    t.integer  "street_number"
+    t.string   "street_extra"
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "start_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "parties", ["city_id"], :name => "index_parties_on_city_id"
+  add_index "parties", ["state_id"], :name => "index_parties_on_state_id"
+
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"
@@ -43,6 +70,13 @@ ActiveRecord::Schema.define(:version => 20121017020645) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.string   "uf"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
