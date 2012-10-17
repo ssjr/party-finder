@@ -9,6 +9,9 @@ class Party < ActiveRecord::Base
     record.errors.add(attr, 'deve ser no futuro.') if value.nil? || value.blank? || (value.past? && record.new_record?)
   end
 
+  geocoded_by :full_street_address
+  after_validation :geocode
+
 
   def as_json(options={})
     {
@@ -26,5 +29,9 @@ class Party < ActiveRecord::Base
       },
       :start_at => self.start_at
     }
+  end
+
+  def full_street_address
+    [street, street_number, city.name, state.uf].compact.join(', ')
   end
 end

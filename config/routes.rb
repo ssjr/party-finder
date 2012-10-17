@@ -1,5 +1,6 @@
 PartyFinder::Application.routes.draw do
   resources :parties
+  get '/locations/cities_for' => 'locations#cities_for'
 
   devise_for :admins
 

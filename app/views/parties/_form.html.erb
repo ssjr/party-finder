@@ -32,20 +32,12 @@
     <%= f.text_field :street_extra %>
   </div>
   <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city_id %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state_id %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
+    <%= select 'party', 'state_id', brazil_states, {selected: @selected_state}, {class: "state"} %><br>
+    <%= select 'party', 'city_id', brazil_cities(@selected_state), {selected: @selected_city}, {class: "city"} %>
+
+
+
+
   </div>
   <div class="field">
     <%= f.label :start_at %><br />

@@ -3,7 +3,7 @@ class PartiesController < ApplicationController
   # GET /parties
   # GET /parties.json
   def index
-    @parties = Party.page(params[:page]).per(1)
+    @parties = Party.page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,6 +42,8 @@ class PartiesController < ApplicationController
   # GET /parties/1/edit
   def edit
     @party = current_user.parties.find(params[:id])
+    @selected_state = @party.city.state_id
+    @selected_city = @party.city.id
   end
 
   # POST /parties

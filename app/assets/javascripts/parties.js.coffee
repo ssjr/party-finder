@@ -1,3 +1,16 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$("select.state").live 'change', ->
+  state = this
+  $.ajax
+    url: "/locations/cities_for",
+    datatype: "json",
+    type: "GET",
+    data:
+      state_id: $(this).val(),
+    success: (data) ->
+      $(state).parents("form").find('select.city').empty()
+      city = $(state).parents("form").find('select.city')
+      $(data).each ->
+        $(city).append $("<option>", {
+          value: this.id,
+          text: this.name
+        })
