@@ -1,37 +1,35 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Name:</b>
+  <b>Nome:</b>
   <%= @party.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>Descrição:</b>
   <%= @party.description %>
 </p>
 
 <p>
-  <b>Street:</b>
+  <b>Logradouro:</b>
   <%= @party.street %>
 </p>
 
 <p>
-  <b>Street number:</b>
+  <b>Número:</b>
   <%= @party.street_number %>
 </p>
 
 <p>
-  <b>Street extra:</b>
+  <b>Complemento:</b>
   <%= @party.street_extra %>
 </p>
 
 <p>
-  <b>City:</b>
+  <b>Cidade:</b>
   <%= @party.city %>
 </p>
 
 <p>
-  <b>State:</b>
+  <b>Estado:</b>
   <%= @party.state %>
 </p>
 
@@ -46,10 +44,10 @@
 </p>
 
 <p>
-  <b>Start at:</b>
-  <%= @party.start_at %>
+  <b>Começo:</b>
+  <%= l @party.start_at %>
 </p>
 
 
-<%= link_to 'Edit', edit_party_path(@party) %> |
-<%= link_to 'Back', parties_path %>
+<%= link_to 'Editar', edit_party_path(@party) %> |
+<%= link_to 'Voltar', parties_path %>
