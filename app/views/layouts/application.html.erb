@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <h1>Party finder</h1>
   <% if user_signed_in? %>
     <p><%= link_to "Logout", destroy_user_session_path, :method => :delete %></p>
   <% else %>
@@ -15,6 +16,11 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 <%= yield %>
-
+  <footer>
+    <hr>
+    <p>Party finder - Desenvolvido para iOS/Android</p>
+    <p>Webapp e API desenvolvidos com <%= link_to "Ruby on Rails", "http://rubyonrails.org/", :target => "_blank" %></p>
+    <p>Por <%= mail_to "eduardofsilva182@gmail.com", "Eduardo Ferreira e Silva", :encode => "hex" %> e <%= mail_to "jr.schnorr@gmail.com", "Sérgio Schnorr Júnior", :encode => "hex" %></p>
+  </footer>
 </body>
 </html>
