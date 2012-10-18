@@ -30,8 +30,10 @@
     <td><%= party.longitude %></td>
     <td><%= party.start_at %></td>
     <td><%= link_to 'Show', party %></td>
-    <td><%= link_to 'Edit', edit_party_path(party) %></td>
-    <td><%= link_to 'Destroy', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if user_signed_in? and current_user == party.user %>
+      <td><%= link_to 'Edit', edit_party_path(party) %></td>
+      <td><%= link_to 'Destroy', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
