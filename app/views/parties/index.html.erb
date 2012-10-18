@@ -2,16 +2,16 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Street</th>
-    <th>Street number</th>
-    <th>Street extra</th>
-    <th>City</th>
-    <th>State</th>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Rua</th>
+    <th>Número</th>
+    <th>Complemento</th>
+    <th>Cidade</th>
+    <th>Estado</th>
     <th>Latitude</th>
     <th>Longitude</th>
-    <th>Start at</th>
+    <th>Início</th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,8 +24,8 @@
     <td><%= party.street %></td>
     <td><%= party.street_number %></td>
     <td><%= party.street_extra %></td>
-    <td><%= party.city %></td>
-    <td><%= party.state %></td>
+    <td><%= party.city.name %></td>
+    <td><%= party.state.name %></td>
     <td><%= party.latitude %></td>
     <td><%= party.longitude %></td>
     <td><%= party.start_at %></td>
@@ -39,5 +39,7 @@
 </table>
 
 <br />
+
+<%= paginate @parties %>
 
 <%= link_to 'New Party', new_party_path %>
