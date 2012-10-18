@@ -5,7 +5,7 @@ class PartiesController < ApplicationController
   def index
     @parties = Party.scoped
     if params[:la].present? and params[:lo].present? and params[:la].to_i and params[:lo].to_i
-      @parties = @parties.where("latitude >= ? AND latitude <= ? AND longitude >= ? AND longitude <= ?", params[:la].to_i - 10, params[:la].to_i + 10, params[:lo].to_i - 10, params[:lo].to_i + 10).order("start_at ASC")
+      @parties = @parties.where("latitude BETWEEN ? AND ? AND longitude BETWEEN ? AND ?", params[:la].to_i - 10, params[:la].to_i + 10, params[:lo].to_i - 10, params[:lo].to_i + 10).order("start_at ASC")
     else
       @parties = @parties.future
     end
