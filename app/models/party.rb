@@ -40,4 +40,8 @@ class Party < ActiveRecord::Base
   def full_street_address
     [street, street_number, city.name, state.uf].compact.join(', ')
   end
+
+  def full_address
+    street + ', ' + street_number.to_s + "#{'/' + street_extra if street_extra.present?}"  + ', ' + city.name + '/' + state.uf
+  end
 end
