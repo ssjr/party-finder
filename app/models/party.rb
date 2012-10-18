@@ -13,6 +13,7 @@ class Party < ActiveRecord::Base
   geocoded_by :full_street_address
   after_validation :geocode
 
+  scope :future, where("start_at > ?", 10.hours.ago).order("start_at ASC")
 
   def as_json(options={})
     {

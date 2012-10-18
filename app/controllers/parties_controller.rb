@@ -3,7 +3,7 @@ class PartiesController < ApplicationController
   # GET /parties
   # GET /parties.json
   def index
-    @parties = Party.page(params[:page]).per(20)
+    @parties = Party.future.page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb
