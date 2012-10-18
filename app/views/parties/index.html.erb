@@ -28,7 +28,7 @@
     <td><%= party.state.name %></td>
     <td><%= party.latitude %></td>
     <td><%= party.longitude %></td>
-    <td><%= party.start_at %></td>
+    <td><%= time_tag party.start_at, l(party.start_at, :format => :short), :title => l(party.start_at)  %></td>
     <td><%= link_to 'Show', party %></td>
     <% if user_signed_in? and current_user == party.user %>
       <td><%= link_to 'Edit', edit_party_path(party) %></td>
