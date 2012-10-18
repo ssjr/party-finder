@@ -10,6 +10,9 @@
 
 require File.expand_path('../seed_cities.rb', __FILE__)
 
+Admin.create(email: "jr.schnorr@gmail.com", password: "123123")
+Admin.create(email: "eduardofsilva182@gmail.com", password: "123123")
+
 if Rails.env.development?
   User.create(email: "user@user.com", password: "123123")
   Admin.create(email: "admin@admin.com", password: "123123")
