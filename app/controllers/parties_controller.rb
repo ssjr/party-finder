@@ -3,7 +3,13 @@ class PartiesController < ApplicationController
   # GET /parties
   # GET /parties.json
   def index
-    @parties = Party.future.page(params[:page]).per(20)
+    @parties = Party.scoped
+    if params[:la].present? and params[:lo].present? and params[:la].to_i and params[:lo].to_i
+      @parties = @parties.where("latitude >= ? AND latitude <= ? AND longitude >= ? AND longitude <= ?", params[:la].to_i - 10, params[:la].to_i + 10, params[:lo].to_i - 10, params[:lo].to_i + 10).order("start_at ASC")
+    else
+      @parties = @parties.future
+    end
+    @parties = @parties.page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -90,4 +96,5 @@ class PartiesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
