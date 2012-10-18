@@ -22,5 +22,15 @@
     <p>Parte web desenvolvida com <%= link_to "Ruby on Rails", "http://rubyonrails.org/", :target => "_blank" %></p>
     <p>Por <%= mail_to "eduardofsilva182@gmail.com", "Eduardo Ferreira e Silva", :encode => "hex" %> e <%= mail_to "jr.schnorr@gmail.com", "Sérgio Schnorr Júnior", :encode => "hex" %></p>
   </footer>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35682668-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 </body>
 </html>
