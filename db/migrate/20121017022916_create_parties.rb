@@ -7,14 +7,14 @@ class CreateParties < ActiveRecord::Migration
       t.integer :street_number
       t.string :street_extra
       t.references :city
-      t.references :state
       t.float :latitude
       t.float :longitude
       t.datetime :start_at
+      t.references :user
 
       t.timestamps
     end
     add_index :parties, :city_id
-    add_index :parties, :state_id
+    add_index :parties, :user_id
   end
 end

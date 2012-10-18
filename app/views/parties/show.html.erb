@@ -25,12 +25,12 @@
 
 <p>
   <b>Cidade:</b>
-  <%= @party.city %>
+  <%= @party.city.name %>
 </p>
 
 <p>
   <b>Estado:</b>
-  <%= @party.state %>
+  <%= @party.state.uf %>
 </p>
 
 <p>
@@ -42,6 +42,8 @@
   <b>Longitude:</b>
   <%= @party.longitude %>
 </p>
+
+<p><%= link_to "Google Maps", "http://maps.google.com.br/?q=@#{@party.latitude},#{@party.longitude}", :target => "_blank" %></p>
 
 <p>
   <b>Começo:</b>

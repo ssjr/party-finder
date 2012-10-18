@@ -9,3 +9,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require File.expand_path('../seed_cities.rb', __FILE__)
+
+if Rails.env.development?
+  User.create(email: "user@user.com", password: "123123")
+  Admin.create(email: "admin@admin.com", password: "123123")
+  city = City.find_by_name("Sapucaia do Sul")
+  party = Party.new(:description => "Descrição", :name => "Minha festa!", :street => "Rua Dona Ecilda", :street_number => 400, :city_id => city.id, :start_at => 9.weeks.from_now)
+  party.user = User.first
+  party.save
+end

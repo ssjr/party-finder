@@ -50,6 +50,7 @@ class PartiesController < ApplicationController
   # POST /parties.json
   def create
     @party = Party.new(params[:party])
+    @party.user = current_user
 
     respond_to do |format|
       if @party.save

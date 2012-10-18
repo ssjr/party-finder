@@ -1,9 +1,10 @@
 class Party < ActiveRecord::Base
   belongs_to :city
   belongs_to :state
-  attr_accessible :description, :latitude, :longitude, :name, :start_at, :street, :street_extra, :street_number, :city_id, :state_id
+  belongs_to :user
+  attr_accessible :description, :latitude, :longitude, :name, :start_at, :street, :street_extra, :street_number, :city_id, :user_id
 
-  validates_presence_of :name, :description, :start_at
+  validates_presence_of :name, :description, :start_at, :street
 
   validates_each :start_at do |record, attr, value|
     record.errors.add(attr, 'deve ser no futuro.') if value.nil? || value.blank? || (value.past? && record.new_record?)
@@ -29,6 +30,10 @@ class Party < ActiveRecord::Base
       },
       :start_at => self.start_at
     }
+  end
+
+  def state
+    self.city.state
   end
 
   def full_street_address

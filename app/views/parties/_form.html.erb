@@ -32,7 +32,7 @@
     <%= f.text_field :street_extra %>
   </div>
   <div class="field">
-    <%= select 'party', 'state_id', brazil_states, {selected: @selected_state}, {class: "state"} %><br>
+    <%= select nil, 'state_id', brazil_states, {selected: @selected_state}, {class: "state"} %><br>
     <%= select 'party', 'city_id', brazil_cities(@selected_state), {selected: @selected_city}, {class: "city"} %>
 
 

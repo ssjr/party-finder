@@ -47,16 +47,16 @@ ActiveRecord::Schema.define(:version => 20121017022916) do
     t.integer  "street_number"
     t.string   "street_extra"
     t.integer  "city_id"
-    t.integer  "state_id"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "start_at"
+    t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
   add_index "parties", ["city_id"], :name => "index_parties_on_city_id"
-  add_index "parties", ["state_id"], :name => "index_parties_on_state_id"
+  add_index "parties", ["user_id"], :name => "index_parties_on_user_id"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
